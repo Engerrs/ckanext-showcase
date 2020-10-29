@@ -180,7 +180,10 @@ class ShowcasePlugin(
         '''
         Modify package_show pkg_dict.
         '''
-        pkg_dict = self._add_to_pkg_dict(context, pkg_dict)
+        try:
+            pkg_dict = self._add_to_pkg_dict(context, pkg_dict)
+        except RuntimeError:
+            pass
 
     def before_view(self, pkg_dict):
         '''
