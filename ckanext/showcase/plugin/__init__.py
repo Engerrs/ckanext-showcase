@@ -28,6 +28,8 @@ if tk.check_ckan_version(u'2.9'):
 else:
     from ckanext.showcase.plugin.pylons_plugin import MixinPlugin
 
+from ckan.common import g
+
 c = tk.c
 _ = tk._
 
@@ -181,6 +183,7 @@ class ShowcasePlugin(
         Modify package_show pkg_dict.
         '''
         try:
+            g.controller
             pkg_dict = self._add_to_pkg_dict(context, pkg_dict)
         except RuntimeError:
             pass
